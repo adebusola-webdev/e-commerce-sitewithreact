@@ -19,10 +19,10 @@ export const Home = () => {
   const  myproducts = useLoaderData();
   return (
     <>
-      <section className="home-container py-3">
+      <section className="home-container py-3 ">
         <div className="container-xxl topcontainer">
           <div className="row main-row">
-            <div className="col-6 mainimg">
+            <div className="col-lg-6 mainimg">
               <Swiper
                 spaceBetween={30}
                 centeredSlides={true}
@@ -77,7 +77,7 @@ export const Home = () => {
                 </SwiperSlide>
               </Swiper>
             </div>
-            <div className="col-6 small-image-con">
+            <div className="col-sm-6 col-lg-6 small-image-con ">
               <div className="d-flex flex-wrap justify-content-between align-item-center">
                 <div className="small-banner-img position-relative p-1">
                   <LazyLoadImage

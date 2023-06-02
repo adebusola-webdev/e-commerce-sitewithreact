@@ -213,7 +213,7 @@ footer {
   /* *{
     border: 0.3px solid red;
   } */
-  body{
+  /* body{
     display: block;
   }
   .main-banner-img{
@@ -231,7 +231,7 @@ footer {
   }
   .small-image-con{
     width: 100%;
-    display:block;
+    
   }
   .small-banner-img{
     width: 100%;
@@ -251,5 +251,17 @@ footer {
   } 
   .topcontainer{
     display: block;
+  } */
+  .small-image-con{
+    width: 100%;
+    
   }
+  /* .small-banner-img{
+    width: 100%;
+    display: block;
+  } */
+  /* .small-banner-img img{
+    width: 100%;
+   
+  } */
 }
