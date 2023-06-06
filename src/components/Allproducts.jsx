@@ -44,7 +44,7 @@ export const Allproducts = ({ myproducts }) => {
                               Add To Cart {cartItemAmount > 0 && <> ({cartItemAmount})</>}
                               <i className="fa-solid fa-cart-shopping shopping-cart fs-7 "></i>
                             </span> */}
-                            <AddToCartBtn cartdata={myproducts}/>
+                            <AddToCartBtn cartdata={item.id}/>
                          
                           
                         </div>

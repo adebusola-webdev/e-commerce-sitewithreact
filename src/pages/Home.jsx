@@ -77,7 +77,7 @@ export const Home = () => {
                 </SwiperSlide>
               </Swiper>
             </div>
-            <div className="col-sm-6 col-lg-6 small-image-con ">
+            <div className="col-sm-8 col-lg-6 small-image-con ">
               <div className="d-flex flex-wrap justify-content-between align-item-center">
                 <div className="small-banner-img position-relative p-1">
                   <LazyLoadImage

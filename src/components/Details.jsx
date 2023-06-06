@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Numberofproductbtn from "./Numberofproductbtn";
 import { ShopContext } from "../context/shopcontext";
 import { useContext } from "react";
+import { AddToCartBtn } from "./AddToCartBtn";
 
 const Details = () => {
   const { id } = useParams();
@@ -12,25 +13,9 @@ const Details = () => {
   let mydata = [];
   mydata.push(data);
   const { AddToCart, cartItem, productList } = useContext(ShopContext);
-  // const [amount, Setamount]=useState(1)
-  // function add(){
 
-  //   Setamount((num)=>{
-  //    let initialnum= num+1
-  //    if(initialnum >10) initialnum=1;
-  //    return initialnum
-  //   })
-  // }
-  // function minus(){
-
-  //   Setamount((num)=>{
-  //    let initialnum= num-1
-  //    if(initialnum < 0) initialnum=1;
-  //    return initialnum
-  //   })
-  // }
   return (
-    <div className="container shadow d-flex justify-content-between mb-5 mt-5 h-75 rounded gap">
+    <div className="container details-con shadow d-lg-flex  justify-content-between mb-5 mt-5 h-75 rounded gap">
       <div className="dImgcontainer mb-5 mt-5">
         <Detailsimg dImg={mydata} />
       </div>
@@ -59,26 +44,14 @@ const Details = () => {
               <div>
                 <h4 className="text-dark mb-3">${item.price}</h4>
               </div>
-              <div className="d-flex gap-5">
-                {/* <div className="d-flex gap-3">
-                 <div className="fs-6">NO:</div>
-                 <button className="border-0 px-2 bg-danger rounded" onClick={minus}> -</button>
-                 <div>{amount}</div>
-                 <button className="border-0 px-2 bg-danger rounded" onClick={add}>+</button>
-                </div> */}
-                <Numberofproductbtn />
-                <Link>
-                  <button
-                    className="primary-btn cart-btn "
-                    onClick={() => AddToCart(item.id)}
-                  >
-                    Add to cart {cartItemAmount > 0 && <> ({cartItemAmount})</>}
-                    <i className="fa-solid fa-cart-shopping shopping-cart fs-7 "></i>
-                  </button>
-                </Link>
+              <div className=" d-button d-flex gap-5">
+               
+                <Numberofproductbtn item={item.id}  />
+              
+                <AddToCartBtn cartdata={item.id}/>
               </div>
               <div className="mt-4">
-                <Link>
+                <Link to="/cart">
                   <span className="primary-btn buynow-btn">Buy now</span>
                 </Link>
               </div>

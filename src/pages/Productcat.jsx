@@ -3,10 +3,11 @@ import { useLoaderData, useParams } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import 'react-lazy-load-image-component/src/effects/blur.css'
 import { Link } from "react-router-dom";
+import { AddToCartBtn } from "../components/AddToCartBtn";
 
 const Productcat = () => {
   const { category } = useParams();
-  const cart = category;
+ 
   const data = useLoaderData();
   return (
     <>
@@ -36,12 +37,7 @@ const Productcat = () => {
                             <p className=" fs-5">
                               &#36; <span>{item.price}</span>
                             </p>
-                            <Link>
-                              <span className="primary-btn cart-btn">
-                                Add to cart
-                                <i className="fa-solid fa-cart-shopping shopping-cart fs-7 "></i>
-                              </span>
-                            </Link>
+                           <AddToCartBtn cartdata={item.id}/>
                           </div>
                         </div>
                       </div>

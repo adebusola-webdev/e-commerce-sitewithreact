@@ -1,12 +1,14 @@
-
-import React, { useContext, useState,useEffect } from 'react'
-import Numberofproductbtn from '../components/Numberofproductbtn'
+import React, { useContext, useState, useEffect } from "react";
+import Numberofproductbtn from "../components/Numberofproductbtn";
 import { ShopContext } from "../context/shopcontext";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
-  const { cartItem, productList } = useContext(ShopContext);
-  const [data, SetData]=useState([])
-  console.log(productList)
+  const { cartItem, productList, totalCartAmount } = useContext(ShopContext);
+  const [data, SetData] = useState([]);
+
+  console.log(productList);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,32 +24,90 @@ const Cart = () => {
 
     fetchData();
   }, []);
- 
 
   return (
     <>
       <div>
-        <div>
-          <h1>Cart Items</h1>
+        <div className="text-center">
+          <h6>Cart Items</h6>
         </div>
-        <div>
+        <div className="shadow">
           {data.map((product) => {
-            const quantity=cartItem[product.id]||0
+            const quantity = cartItem[product.id] || 0;
             if (quantity !== 0) {
               return (
                 <div key={product.id}>
-                  <h2>{product.title}</h2>
-                  <img src={product.images[0]} alt="" />
-                  <p>Quantity: {cartItem[product.id]}</p>
-                  {/* You can add more information about the product */}
+                  <div className="table-responsive-sm">
+                  <table className="table ">
+                    <tr className="fs-6 border">
+                      <th className="col-2">Items</th>
+                      <th className="col-2">Price</th>
+                      <th className="col-2">Quantity</th>
+                      <th className="col-2">Total</th>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div className="">
+                          <p className="text-danger">{product.title}</p>
+                          <LazyLoadImage
+                            src={product.images[0]}
+                            alt=""
+                            effect="blur"
+                            width="70px"
+                            height="70px"
+                          />
+                        </div>
+                      </td>
+                      <td>${product.price}</td>
+
+                      <td>
+                        <Numberofproductbtn item={product.id} />
+                      </td>
+
+                      <td>
+                        <p className="">
+                          ${product.price} X {cartItem[product.id]} = $
+                          {cartItem[product.id] * product.price}
+                        </p>
+                      </td>
+                    </tr>
+                  </table>
+                  </div>
+                  
                 </div>
               );
             }
             return null;
           })}
         </div>
+        {totalCartAmount > 0 ? (
+          <div>
+            <div className="d-flex align-item-center justify-content-center mt-5 gap-3">
+              <p className="fs-3">subtotal:</p>
+              <p className="fs-3">${totalCartAmount}</p>
+            </div>
+
+            <div className="d-flex flex-wrap align-item-center justify-content-center mt-5 gap-3">
+              <div className="mt-4">
+                <Link to="/">
+                  <span className="primary-btn buynow-btn">
+                   Shop
+                  </span>
+                </Link>
+              </div>
+              <div className="mt-4">
+                <Link to="/cart">
+                  <span className="primary-btn buynow-btn">Checkout</span>
+                </Link>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <h1 className="text-center mt-5">Your cart is empty</h1>
+        )}
       </div>
     </>
   );
 };
-export default Cart
+export default Cart;

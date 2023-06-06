@@ -16,7 +16,7 @@ const Detailsimg = ({ dImg }) => {
     <div className=" ">
       {dImg.map((item, index) => {
         return (
-          <div>
+          <div className="dimg-con">
             <Swiper
               spaceBetween={30}
               centeredSlides={true}
@@ -78,7 +78,7 @@ const Detailsimg = ({ dImg }) => {
                   alt={item.title}
                   effect="blur"
                   src={item.images[4]}
-                  height="200px"
+                  height="500px"
                   width="400px"
                   className="dImg"
                 />

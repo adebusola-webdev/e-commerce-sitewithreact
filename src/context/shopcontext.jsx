@@ -54,13 +54,17 @@
 
 // export default ShopContextProvider;
 
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect } from "react";
+import { Circles } from  'react-loader-spinner'
 
 export const ShopContext = createContext(null);
 
 const ShopContextProvider = (props) => {
   const [cartItem, setCartItem] = useState({});
   const [productList, setProductList] = useState([]);
+
+  const [totalCartAmount, setTotalCartAmount] = useState(0);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -97,12 +101,42 @@ const ShopContextProvider = (props) => {
   const RemoveCart = (itemId) => {
     setCartItem((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
   };
+  useEffect(() => {
+    const updateTotalCartAmount = () => {
+      let amount = 0;
+      for (const item in cartItem) {
+        if (cartItem[item] > 0) {
+          const info = productList.find(
+            (product) => product.id === Number(item)
+          );
+          amount += cartItem[item] * info.price;
+        }
+      }
+      setTotalCartAmount(amount);
+    };
+    updateTotalCartAmount();
+  }, [cartItem, productList]);
 
-  const contextValue = { cartItem, AddToCart, RemoveCart };
+  const contextValue = { cartItem, AddToCart, RemoveCart, totalCartAmount };
 
   return (
     <ShopContext.Provider value={contextValue}>
-      {productList.length > 0 ? props.children : "Loading..."}
+      {productList.length > 0 ? (
+        props.children
+      ) : (
+        <div className=" spinner d-flex justify-content-center align-items-center ">
+    
+          <Circles
+            height="80"
+            width="80"
+            color="#131921"
+            ariaLabel="circles-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+          />
+        </div>
+      )}
     </ShopContext.Provider>
   );
 };

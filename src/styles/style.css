@@ -2,8 +2,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
   font-family: "Rubik", sans-serif;
 }
+
+
 a {
   text-decoration: none;
   display: inline-block;
@@ -54,6 +57,9 @@ a {
   display: flex;
   gap: 10rem;
 }
+.headergap{
+  gap: 5rem;
+}
 .dropdown-item:hover {
   background-color: var(--red--);
   color: white;
@@ -65,6 +71,8 @@ a {
 }
 footer {
   background-color: var(--dark-blue-);
+  position: relative;
+  
 }
 .bottom-footer {
   border-top: 1px solid white;
@@ -176,6 +184,13 @@ footer {
 .buynow-btn:hover{
   color: var(--red--);
 }
+.spinner{
+  margin-top:  250px;
+ color: #131921;
+}
+.bottom-footer{
+  margin-top: 400px;
+}
 
 
 
@@ -208,60 +223,31 @@ footer {
 
 
 
-
-@media screen and (max-width: 600px) {
-  /* *{
-    border: 0.3px solid red;
-  } */
-  /* body{
-    display: block;
+@media screen and (max-width: 1000px) {
+  .details-con{
+    flex-wrap: wrap;
   }
-  .main-banner-img{
-    width: 100%;
-    display: block;
-    max-width: 100%;
+  .d-button{
+    flex-wrap: wrap;
   }
-  .main-banner-img img{
-    width: 100%;
-    display: block;
-    max-width: 100%;
+  .buynow-btn{
+    padding: 0.5rem 2.7rem;
   }
-  .main-row{
-    display: block;
-  }
-  .small-image-con{
-    width: 100%;
-    
-  }
-  .small-banner-img{
-    width: 100%;
-    display: block;
-  }
-  .small-banner-img img{
-    width: 100%;
-   
-  }
-  .mainimg{
-    display: block;
-    
-  }
-  .mainimg img{
-    display: block;
 
-  } 
-  .topcontainer{
-    display: block;
-  } */
-  .small-image-con{
-    width: 100%;
-    
+}
+@media screen and (max-width:750px) {
+.menu{
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}  
+}
+@media screen and (max-width:400px){
+  .dImg{
+    height: 100px;
+    width: 200px;
   }
-  /* .small-banner-img{
-    width: 100%;
-    display: block;
-  } */
-  /* .small-banner-img img{
-    width: 100%;
-   
-  } */
+  .dimg-con{
+    width: 200px;
+    height: 100px;
+  }
 }
